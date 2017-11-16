@@ -72,7 +72,7 @@ class USPSFlags::Grades
 
   private
   def validate
-    raise USPSFlags::Errors::InvalidInsignia, "Unknown grade: #{@grade}" unless USPSFlags::Grades::Grade.valid_grades.include?(@grade)
+    raise USPSFlags::Errors::InvalidInsignia, "Unknown grade: #{@grade}" unless @grade.nil? || USPSFlags::Grades::Grade.valid_grades.include?(@grade)
     raise USPSFlags::Errors::InvalidInsignia, "EdPro must be boolean" unless [true, false].include?(@edpro)
     raise USPSFlags::Errors::InvalidInsignia, "Unknown membership level: #{@membership}" unless [nil, :senior, :life].include?(@membership)
   end

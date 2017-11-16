@@ -5,6 +5,7 @@
 class USPSFlags::Grades::Grade
   class << self
     def get(grade)
+      return if grade.nil?
       raise USPSFlags::Errors::InvalidInsignia, "Unknown grade: #{grade}" unless valid_grades.include?(grade)
 
       send(grade)

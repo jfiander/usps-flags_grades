@@ -42,7 +42,7 @@ class USPSFlags::Grades
       #{USPSFlags::Core.headers(title: self.title)}
       <g transform="translate(0, 50)">
         #{USPSFlags::Grades::Grade.send(@grade)}
-        #{USPSFlags::Grades::EdPro.get(@grade) if @edpro}
+        #{USPSFlags::Grades::EdPro.get(@grade) if @edpro && USPSFlags::Grades::EdPro.for_grade(@grade)}
         #{USPSFlags::Grades::Membership.send(@membership) unless @membership.nil?}
       </g>
       #{USPSFlags::Core.footer}

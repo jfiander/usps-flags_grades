@@ -41,9 +41,9 @@ class USPSFlags::Grades
     @svg = <<~SVG
       #{USPSFlags::Core.headers(title: self.title)}
       <g transform="translate(0, 50)">
-        #{USPSFlags::Grades::Grade.send(@grade)}
+        #{USPSFlags::Grades::Grade.get(@grade)}
         #{USPSFlags::Grades::EdPro.get(@grade) if @edpro && USPSFlags::Grades::EdPro.for_grade(@grade)}
-        #{USPSFlags::Grades::Membership.send(@membership) unless @membership.nil?}
+        #{USPSFlags::Grades::Membership.get(@membership) unless @membership.nil?}
       </g>
       #{USPSFlags::Core.footer}
     SVG
@@ -66,7 +66,7 @@ class USPSFlags::Grades
 
   private
   def validate
-    raise USPSFlags::Errors::InvalidInsignia, "Unknown grade: #{@grade}" unless [:s, :p, :ap, :jn, :n, :sn].include?(@grade)
+    raise USPSFlags::Errors::InvalidInsignia, "Unknown grade: #{@grade}" unless USPSFlags::Grades::Grade.valid_grades.include?(@grade)
     raise USPSFlags::Errors::InvalidInsignia, "EdPro must be boolean" unless [true, false].include?(@edpro)
     raise USPSFlags::Errors::InvalidInsignia, "Unknown membership level: #{@membership}" unless [nil, :senior, :life].include?(@membership)
   end

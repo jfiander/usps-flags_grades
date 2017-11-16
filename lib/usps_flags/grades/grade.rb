@@ -4,6 +4,31 @@
 # @private
 class USPSFlags::Grades::Grade
   class << self
+    def get(grade)
+      raise USPSFlags::Errors::InvalidInsignia, "Unknown grade: #{grade}" unless valid_grades.include?(grade)
+
+      send(grade)
+    end
+
+    def valid_grades
+      [:s, :p, :ap, :jn, :n, :sn]
+    end
+
+    private
+    def bar
+      <<~SVG
+        <rect x="0" y="0" width="100" height="35" fill="#{USPSFlags::Config::GOLD}" stroke-width="5" stroke="#000000" />
+      SVG
+    end
+
+    def star
+      <<~SVG
+        <g transform="scale(0.25) translate(0, 150)">
+          #{USPSFlags::Core::Star.new.svg.gsub("fill=\"#FFFFFF\"", "fill=\"#{USPSFlags::Config::GOLD}\" stroke-width=\"15\" stroke=\"#000000\"")}
+        </g>
+      SVG
+    end
+
     def s
       bar
     end
@@ -41,21 +66,6 @@ class USPSFlags::Grades::Grade
           <g transform="translate(#{USPSFlags::Config::GRADE_SPACING * 2 + 20})">#{star}</g>
           <g transform="translate(#{USPSFlags::Config::GRADE_SPACING * 3 - 10})">#{bar}</g>
           <g transform="translate(#{USPSFlags::Config::GRADE_SPACING * 4 + 50})">#{star}</g>
-        </g>
-      SVG
-    end
-
-    private
-    def bar
-      <<~SVG
-        <rect x="0" y="0" width="100" height="35" fill="#{USPSFlags::Config::GOLD}" stroke-width="5" stroke="#000000" />
-      SVG
-    end
-
-    def star
-      <<~SVG
-        <g transform="scale(0.25) translate(0, 150)">
-          #{USPSFlags::Core::Star.new.svg.gsub("fill=\"#FFFFFF\"", "fill=\"#{USPSFlags::Config::GOLD}\" stroke-width=\"15\" stroke=\"#000000\"")}
         </g>
       SVG
     end

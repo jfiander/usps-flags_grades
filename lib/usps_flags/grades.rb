@@ -7,6 +7,7 @@ class USPSFlags::Grades
   require 'usps_flags/grades/grade'
   require 'usps_flags/grades/membership'
   require 'usps_flags/grades/edpro'
+  require 'usps_flags/grades/merit_marks'
 
   # Constructor for generating grade insignia.
   #

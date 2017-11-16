@@ -8,7 +8,7 @@ class USPSFlags::Grades::EdPro
       raise USPSFlags::Errors::InvalidInsignia, "EdPro is only valid for grades AP, JN, N" unless for_grade(grade)
 
       <<~SVG
-        <rect x="0" y="100" width="#{length(grade)}" height="15" fill="#{USPSFlags::Config::GOLD}" stroke-width="5" stroke="#000000" />
+        <rect x="0" y="100" width="#{USPSFlags::Grades::Grade.width(grade)}" height="15" fill="#{USPSFlags::Config::GOLD}" />
       SVG
     end
 

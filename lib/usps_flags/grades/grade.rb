@@ -28,14 +28,14 @@ class USPSFlags::Grades::Grade
     private
     def bar
       <<~SVG
-        <rect x="0" y="0" width="100" height="35" fill="#{USPSFlags::Config::GOLD}" stroke-width="5" stroke="#000000" />
+        <rect x="0" y="0" width="100" height="35" fill="#{USPSFlags::Config::GOLD}" />
       SVG
     end
 
     def star
       <<~SVG
         <g transform="scale(0.25) translate(0, 150)">
-          #{USPSFlags::Core::Star.new.svg.gsub("fill=\"#FFFFFF\"", "fill=\"#{USPSFlags::Config::GOLD}\" stroke-width=\"15\" stroke=\"#000000\"")}
+          #{USPSFlags::Core::Star.new.svg.gsub("fill=\"#FFFFFF\"", "fill=\"#{USPSFlags::Config::GOLD}\"")}
         </g>
       SVG
     end

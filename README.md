@@ -11,7 +11,14 @@ An extension for [USPSFlags](https://github.com/jfiander/usps-flags) to generate
 ## Usage
 
 ```ruby
-USPSFlags::Grades.get(:grade, options)
+insignia = USPSFlags::Grades.new do |g|
+  g.grade = :sn
+  g.membership = :senior
+  g.merit_marks = 20
+  g.outfile = "/path/to/svg/output.svg"
+end
+
+insignia.svg #=> Generates SVG file at "/path/to/svg/output.svg"
 ```
 
 ## Security

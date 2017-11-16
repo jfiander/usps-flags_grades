@@ -40,9 +40,11 @@ class USPSFlags::Grades
   def svg
     @svg = <<~SVG
       #{USPSFlags::Core.headers(title: self.title)}
-      #{USPSFlags::Grades::Grade.send(@grade)}
-      #{USPSFlags::Grades::EdPro.get(@grade) if @edpro}
-      #{USPSFlags::Grades::Membership.send(@membership) unless @membership.nil?}
+      <g transform="translate(0, 50)">
+        #{USPSFlags::Grades::Grade.send(@grade)}
+        #{USPSFlags::Grades::EdPro.get(@grade) if @edpro}
+        #{USPSFlags::Grades::Membership.send(@membership) unless @membership.nil?}
+      </g>
       #{USPSFlags::Core.footer}
     SVG
 

@@ -69,5 +69,15 @@ class USPSFlags::Grades::Grade
         </g>
       SVG
     end
+
+    def sn
+      box_width = USPSFlags::Grades::Grade.width(:n) + 85
+      <<~SVG
+        <polyline points="20,-10 #{box_width},-10 #{box_width},150 20,150 20,-10" fill=\"none\" stroke-width=\"15\" stroke=\"#{USPSFlags::Config::GOLD}\" />
+        <g transform="translate(50, 50)">
+          #{n}
+        </g>
+      SVG
+    end
   end
 end

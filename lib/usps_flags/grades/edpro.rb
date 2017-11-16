@@ -15,17 +15,5 @@ class USPSFlags::Grades::EdPro
     def for_grade(grade)
       [:ap, :jn, :n].include?(grade)
     end
-
-    private
-    def length(grade)
-      case grade
-      when :ap
-        USPSFlags::Config::GRADE_SPACING * 2.25 + 100
-      when :jn
-        USPSFlags::Config::GRADE_SPACING * 3 - 10
-      when :n
-        USPSFlags::Config::GRADE_SPACING * 5 + 25
-      end
-    end
   end
 end

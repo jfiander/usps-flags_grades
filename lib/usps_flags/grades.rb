@@ -24,6 +24,7 @@ class USPSFlags::Grades
     @grade = nil
     @edpro = false
     @membership = nil
+    @merit_marks = 0
     @outfile = nil
     @generated_at = Time.now.strftime("%Y%m%d.%H%S%z")
     yield self if block_given?
@@ -33,6 +34,7 @@ class USPSFlags::Grades
   attr_accessor :grade
   attr_accessor :edpro
   attr_accessor :membership
+  attr_accessor :merit_marks
   attr_accessor :outfile
 
   # Generates the constructed file as SVG.
@@ -45,6 +47,9 @@ class USPSFlags::Grades
         #{USPSFlags::Grades::Grade.get(@grade)}
         #{USPSFlags::Grades::EdPro.get(@grade) if @edpro && USPSFlags::Grades::EdPro.for_grade(@grade)}
         #{USPSFlags::Grades::Membership.get(@membership) unless @membership.nil?}
+      </g>
+      <g transform="translate(0, 450)">
+         #{USPSFlags::Grades::MeritMarks.get(@merit_marks)}
       </g>
       #{USPSFlags::Core.footer}
     SVG

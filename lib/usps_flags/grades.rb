@@ -28,7 +28,6 @@ class USPSFlags::Grades
     @outfile = nil
     @generated_at = Time.now.strftime("%Y%m%d.%H%S%z")
     yield self if block_given?
-    validate
   end
 
   attr_accessor :grade
@@ -41,6 +40,7 @@ class USPSFlags::Grades
   #
   # @return [String] Returns the SVG file output path, or the svg data if no path was specified.
   def svg
+    validate
     @svg = <<~SVG
       #{USPSFlags::Core.headers(title: self.title)}
       <g transform="translate(0, 50)">

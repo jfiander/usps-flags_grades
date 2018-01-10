@@ -24,7 +24,7 @@ describe USPSFlags::Grades do
       expect(@insignia.svg).to include(
         <<~SVG
           <g transform="translate(0, 50)">
-            <rect x="0" y="0" width="100" height="35" fill="#FFD700" />
+            <rect x="0" y="0" width="100" height="35" fill="#FFBF3F" />
         SVG
       )
     end
@@ -42,9 +42,9 @@ describe USPSFlags::Grades do
       expect(@insignia.svg).to include(
         <<~SVG
           <g transform="translate(0, 50)">
-            <rect x="0" y="0" width="100" height="35" fill="#FFD700" />
+            <rect x="0" y="0" width="100" height="35" fill="#FFBF3F" />
 
-          <g transform="translate(125)"><rect x="0" y="0" width="100" height="35" fill="#FFD700" />
+          <g transform="translate(125)"><rect x="0" y="0" width="100" height="35" fill="#FFBF3F" />
           </g>
         SVG
       )
@@ -64,7 +64,7 @@ describe USPSFlags::Grades do
       expect(@insignia.svg).to include(
         <<~SVG
           <g transform="translate(0, 50)">
-            <rect x="0" y="0" width="100" height="35" fill="#FFD700" />
+            <rect x="0" y="0" width="100" height="35" fill="#FFBF3F" />
 
           <g transform="translate(192.5)"><g transform="scale(0.25) translate(0, 150)">
             <path d="M 0 0
@@ -78,11 +78,11 @@ describe USPSFlags::Grades do
           l 114.125 86.525
           l -41.47 137.085
           l 117.555 -81.805
-          " fill="#FFD700" />
+          " fill="#FFBF3F" />
 
           </g>
           </g>
-          <g transform="translate(281.25)"><rect x="0" y="0" width="100" height="35" fill="#FFD700" />
+          <g transform="translate(281.25)"><rect x="0" y="0" width="100" height="35" fill="#FFBF3F" />
           </g>
         SVG
       )
@@ -91,7 +91,7 @@ describe USPSFlags::Grades do
     it "should have the AP EdPro bar" do
       expect(@insignia.svg).to include(
         <<~SVG
-          <rect x="0" y="100" width="381.25" height="15" fill="#FFD700" />
+          <rect x="0" y="100" width="381.25" height="15" fill="#FFBF3F" />
         SVG
       )
     end
@@ -124,11 +124,11 @@ describe USPSFlags::Grades do
           l 114.125 86.525
           l -41.47 137.085
           l 117.555 -81.805
-          " fill="#FFD700" />
+          " fill="#FFBF3F" />
 
           </g>
 
-            <g transform="translate(87)"><rect x="0" y="0" width="100" height="35" fill="#FFD700" />
+            <g transform="translate(87)"><rect x="0" y="0" width="100" height="35" fill="#FFBF3F" />
           </g>
             <g transform="translate(270)"><g transform="scale(0.25) translate(0, 150)">
             <path d="M 0 0
@@ -142,7 +142,7 @@ describe USPSFlags::Grades do
           l 114.125 86.525
           l -41.47 137.085
           l 117.555 -81.805
-          " fill="#FFD700" />
+          " fill="#FFBF3F" />
 
           </g>
           </g>
@@ -152,17 +152,17 @@ describe USPSFlags::Grades do
     end
 
     it "should have a 5th position merit mark" do
-      expect(@insignia.svg).to include("<rect x=\"180\" y=\"0\" width=\"35\" height=\"80\" fill=\"#FFD700\" />")
+      expect(@insignia.svg).to include("<rect x=\"180\" y=\"0\" width=\"35\" height=\"80\" fill=\"#FFBF3F\" />")
     end
 
     it "should not have a 6th position merit mark" do
-      expect(@insignia.svg).to_not include("<rect x=\"225\" y=\"0\" width=\"35\" height=\"80\" fill=\"#FFD700\" />")
+      expect(@insignia.svg).to_not include("<rect x=\"225\" y=\"0\" width=\"35\" height=\"80\" fill=\"#FFBF3F\" />")
     end
 
     it "should have the JN EdPro bar" do
       expect(@insignia.svg).to include(
         <<~SVG
-          <rect x="0" y="100" width="365" height="15" fill="#FFD700" />
+          <rect x="0" y="100" width="365" height="15" fill="#FFBF3F" />
         SVG
       )
     end
@@ -194,11 +194,11 @@ describe USPSFlags::Grades do
           l 114.125 86.525
           l -41.47 137.085
           l 117.555 -81.805
-          " fill="#FFD700" />
+          " fill="#FFBF3F" />
 
           </g>
 
-            <g transform="translate(87)"><rect x="0" y="0" width="100" height="35" fill="#FFD700" />
+            <g transform="translate(87)"><rect x="0" y="0" width="100" height="35" fill="#FFBF3F" />
           </g>
             <g transform="translate(270)"><g transform="scale(0.25) translate(0, 150)">
             <path d="M 0 0
@@ -212,11 +212,11 @@ describe USPSFlags::Grades do
           l 114.125 86.525
           l -41.47 137.085
           l 117.555 -81.805
-          " fill="#FFD700" />
+          " fill="#FFBF3F" />
 
           </g>
           </g>
-            <g transform="translate(365)"><rect x="0" y="0" width="100" height="35" fill="#FFD700" />
+            <g transform="translate(365)"><rect x="0" y="0" width="100" height="35" fill="#FFBF3F" />
           </g>
             <g transform="translate(550)"><g transform="scale(0.25) translate(0, 150)">
             <path d="M 0 0
@@ -230,7 +230,7 @@ describe USPSFlags::Grades do
           l 114.125 86.525
           l -41.47 137.085
           l 117.555 -81.805
-          " fill="#FFD700" />
+          " fill="#FFBF3F" />
 
           </g>
           </g>
@@ -259,7 +259,7 @@ describe USPSFlags::Grades do
     it "should have the SN insignia box" do
       expect(@insignia.svg).to include(
         <<~SVG
-          <polyline points="20,-10 735,-10 735,150 20,150 20,-10" fill="none" stroke-width="15" stroke="#FFD700" />
+          <polyline points="20,-10 735,-10 735,150 20,150 20,-10" fill="none" stroke-width="15" stroke="#FFBF3F" />
         SVG
       )
     end
@@ -267,18 +267,18 @@ describe USPSFlags::Grades do
     it "should have a senior member arrow" do
       expect(@insignia.svg).to include(
         <<~SVG
-          <polyline points="0,250 75,220 75,240 150,240 150,260 75,260 75,280 0,250" fill="#FFD700" />
-          <polyline points="145,240 350,240 350,260 145,260 145,240" fill="#FFD700" />
-          <polyline points="400,240 610,240 610,260 400,260 400,240" fill="#FFD700" />
-          <polyline points="600,240 675,240 675,220 750,250 675,280 675,260 600,260 600,240" fill="#FFD700" />
+          <polyline points="0,250 75,220 75,240 150,240 150,260 75,260 75,280 0,250" fill="#FFBF3F" />
+          <polyline points="145,240 350,240 350,260 145,260 145,240" fill="#FFBF3F" />
+          <polyline points="400,240 610,240 610,260 400,260 400,240" fill="#FFBF3F" />
+          <polyline points="600,240 675,240 675,220 750,250 675,280 675,260 600,260 600,240" fill="#FFBF3F" />
 
-          <polyline points="325,200 350,200 375,275 400,200 425,200 390,300 360,300 325,200" fill="#FFD700" />
+          <polyline points="325,200 350,200 375,275 400,200 425,200 390,300 360,300 325,200" fill="#FFBF3F" />
         SVG
       )
     end
 
     it "should have a 20th position merit mark" do
-      expect(@insignia.svg).to include("<rect x=\"855\" y=\"0\" width=\"35\" height=\"80\" fill=\"#FFD700\" />")
+      expect(@insignia.svg).to include("<rect x=\"855\" y=\"0\" width=\"35\" height=\"80\" fill=\"#FFBF3F\" />")
     end
   end
 end

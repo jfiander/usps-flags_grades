@@ -2,6 +2,6 @@
 #
 # @private
 class USPSFlags::Config
-  GOLD ||= "#FFD700"
+  GOLD ||= "#FFBF3F"
   GRADE_SPACING ||= 125
 end

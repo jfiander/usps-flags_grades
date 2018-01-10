@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name          = 'usps_flags-grades'
-  s.version       = '0.0.2'
-  s.date          = '2017-12-19'
+  s.version       = '0.0.3'
+  s.date          = '2018-01-10'
   s.summary       = 'Insignia generator for United States Power Squadrons'
   s.description   = 'An extension to the flag image (PNG, SVG) generator for United States Power Squadrons to generate grade insignia.'
   s.homepage      = 'http://rubygems.org/gems/usps_flags-grades'
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '~> 2.4'
 
-  s.add_runtime_dependency 'usps_flags', '~> 0.3',  '>= 0.3.16'
+  s.add_runtime_dependency 'usps_flags', '~> 0.3',  '>= 0.3.17'
 
   s.add_development_dependency 'rake',      '~> 12.2', '>= 12.2.1'
   s.add_development_dependency 'rspec',     '~> 3.7',  '>= 3.7.0'

@@ -4,7 +4,6 @@
 [![Build Status](https://travis-ci.org/jfiander/usps-flags_grades.svg)](https://travis-ci.org/jfiander/usps-flags_grades)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/760b824f0edac3316a11/test_coverage)](https://codeclimate.com/github/jfiander/usps-flags_grades/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/760b824f0edac3316a11/maintainability)](https://codeclimate.com/github/jfiander/usps-flags_grades/maintainability)
-[![Dependencies](https://img.shields.io/gemnasium/jfiander/usps-flags_grades.svg)](https://gemnasium.com/github.com/jfiander/usps-flags_grades)
 
 An extension for [USPSFlags](https://github.com/jfiander/usps-flags) to generate grade insignia.
 

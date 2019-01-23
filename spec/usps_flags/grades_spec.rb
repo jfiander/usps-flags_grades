@@ -257,11 +257,8 @@ describe USPSFlags::Grades do
     end
 
     it "should have the SN insignia box" do
-      expect(@insignia.svg).to include(
-        <<~SVG
-          <polyline points="20,-10 735,-10 735,150 20,150 20,-10" fill="none" stroke-width="15" stroke="#FFBF3F" />
-        SVG
-      )
+      expect(@insignia.svg).to include('<rect x="20" y="-10" width="')
+      expect(@insignia.svg).to include('" height="150" fill="none" stroke-width="15"')
     end
 
     it "should have a senior member arrow" do
@@ -270,6 +267,7 @@ describe USPSFlags::Grades do
           <polyline points="0,250 75,220 75,240 150,240 150,260 75,260 75,280 0,250" fill="#FFBF3F" />
           <polyline points="145,240 350,240 350,260 145,260 145,240" fill="#FFBF3F" />
           <polyline points="400,240 610,240 610,260 400,260 400,240" fill="#FFBF3F" />
+
           <polyline points="600,240 675,240 675,220 750,250 675,280 675,260 600,260 600,240" fill="#FFBF3F" />
 
           <polyline points="325,200 350,200 375,275 400,200 425,200 390,300 360,300 325,200" fill="#FFBF3F" />

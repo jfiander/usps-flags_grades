@@ -42,7 +42,7 @@ class USPSFlags::Grades
   def svg
     validate
     @svg = <<~SVG
-      #{USPSFlags::Core.headers(title: self.title)}
+      #{USPSFlags::Core.headers(title: title)}
       <g transform="translate(0, 50)">
         #{USPSFlags::Grades::Grade.get(@grade)}
         #{USPSFlags::Grades::EdPro.get(@grade) if @edpro && USPSFlags::Grades::EdPro.for_grade(@grade)}
@@ -57,6 +57,9 @@ class USPSFlags::Grades
     USPSFlags::Helpers.output(@svg, outfile: @outfile)
   end
 
+  # Generates the descriptive title for the SVG.
+  #
+  # @return [String] Returns the descriptive title.
   def title
     grade = @grade.to_s.upcase
     edpro = " - EdPro" if @edpro && @grade != :sn
@@ -71,9 +74,28 @@ class USPSFlags::Grades
   end
 
   private
+
   def validate
-    raise USPSFlags::Errors::InvalidInsignia, "Unknown grade: #{@grade}" unless @grade.nil? || USPSFlags::Grades::Grade.valid_grades.include?(@grade)
-    raise USPSFlags::Errors::InvalidInsignia, "EdPro must be boolean" unless [true, false].include?(@edpro)
-    raise USPSFlags::Errors::InvalidInsignia, "Unknown membership level: #{@membership}" unless [nil, :senior, :life].include?(@membership)
+    validate_grade
+    validate_edpro
+    validate_membership
+  end
+
+  def validate_grade
+    return if @grade.nil? || USPSFlags::Grades::Grade.valid_grades.include?(@grade)
+
+    raise USPSFlags::Errors::InvalidInsignia, "Unknown grade: #{@grade}"
+  end
+
+  def validate_edpro
+    return if [true, false].include?(@edpro)
+
+    raise USPSFlags::Errors::InvalidInsignia, "EdPro must be boolean"
+  end
+
+  def validate_membership
+    return if [nil, :senior, :life].include?(@membership)
+
+    raise USPSFlags::Errors::InvalidInsignia, "Unknown membership level: #{@membership}"
   end
 end

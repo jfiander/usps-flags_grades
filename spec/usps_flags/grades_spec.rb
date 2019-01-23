@@ -1,14 +1,38 @@
 require 'spec_helper'
 
 describe USPSFlags::Grades do
-  context "invalid grade" do
-    it "should raise USPSFlags::Errors::InvalidInsignia if an invalid insignia is specified" do
+  describe "invalid insignia" do
+    it "should raise USPSFlags::Errors::InvalidInsignia if an invalid grade is specified" do
       @insignia = USPSFlags::Grades.new do |b|
         b.grade = :not_a_grade
         b.outfile = ""
       end
 
-      expect { @insignia.svg }.to raise_error(USPSFlags::Errors::InvalidInsignia)
+      expect { @insignia.svg }.to raise_error(
+        USPSFlags::Errors::InvalidInsignia, "Unknown grade: not_a_grade"
+      )
+    end
+
+    it "should raise USPSFlags::Errors::InvalidInsignia if an invalid edpro is specified" do
+      @insignia = USPSFlags::Grades.new do |b|
+        b.edpro = nil
+        b.outfile = ""
+      end
+
+      expect { @insignia.svg }.to raise_error(
+        USPSFlags::Errors::InvalidInsignia, "EdPro must be boolean"
+      )
+    end
+
+    it "should raise USPSFlags::Errors::InvalidInsignia if an invalid membership is specified" do
+      @insignia = USPSFlags::Grades.new do |b|
+        b.membership = :normal
+        b.outfile = ""
+      end
+
+      expect { @insignia.svg }.to raise_error(
+        USPSFlags::Errors::InvalidInsignia, "Unknown membership level: normal"
+      )
     end
   end
 

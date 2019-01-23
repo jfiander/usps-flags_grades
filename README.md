@@ -5,7 +5,8 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/760b824f0edac3316a11/test_coverage)](https://codeclimate.com/github/jfiander/usps-flags_grades/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/760b824f0edac3316a11/maintainability)](https://codeclimate.com/github/jfiander/usps-flags_grades/maintainability)
 
-An extension for [USPSFlags](https://github.com/jfiander/usps-flags) to generate grade insignia.
+An extension for [USPSFlags](https://github.com/jfiander/usps-flags) to generate
+grade insignia.
 
 ## Usage
 

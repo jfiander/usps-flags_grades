@@ -6,7 +6,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/760b824f0edac3316a11/maintainability)](https://codeclimate.com/github/jfiander/usps-flags_grades/maintainability)
 
 An extension for [USPSFlags](https://github.com/jfiander/usps-flags) to generate
-grade insignia.
+regrade insignia.
 
 ## Usage
 
@@ -40,8 +40,9 @@ gem install usps_flags-grades -P HighSecurity
 
 ## License
 
-Actual images generated may be registered trademarks of their
-respective squadrons.
+Actual images generated are
+[registered trademarks](http://www.usps.org/national/itcom/trademark.html) of
+United States Power Squadrons.
 
 This project is released under the
 [GPLv3](https://raw.github.com/jfiander/usps-flags-grades/master/LICENSE).

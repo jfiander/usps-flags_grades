@@ -27,6 +27,7 @@ class USPSFlags::Grades::Grade
     end
 
     private
+  
     def bar
       <<~SVG
         <rect x="0" y="0" width="100" height="35" fill="#{USPSFlags::Config::GOLD}" />
@@ -36,7 +37,7 @@ class USPSFlags::Grades::Grade
     def star
       <<~SVG
         <g transform="scale(0.25) translate(0, 150)">
-          #{USPSFlags::Core::Star.new.svg.gsub("fill=\"#FFFFFF\"", "fill=\"#{USPSFlags::Config::GOLD}\"")}
+          #{USPSFlags::Core::Icons::Star.new.svg.gsub('fill="#FFFFFF"', "fill=\"#{USPSFlags::Config::GOLD}\"")}
         </g>
       SVG
     end

@@ -90,7 +90,7 @@ describe USPSFlags::Grades do
           <g transform="translate(0, 50)">
             <rect x="0" y="0" width="100" height="35" fill="#FFBF3F" />
 
-          <g transform="translate(192.5)"><g transform="scale(0.25) translate(0, 150)">
+          <g transform="translate(192.5)"><g transform="scale(0.33) translate(0, 150)">
             <path d="M 0 0
           l 117.555 81.805
           l -41.47 -137.085
@@ -135,8 +135,8 @@ describe USPSFlags::Grades do
       expect(@insignia.svg).to include(
         <<~SVG
           <g transform="translate(0, 50)">
-            <g transform="translate(50)">
-            <g transform="scale(0.25) translate(0, 150)">
+            <g transform="translate(60)">
+            <g transform="scale(0.33) translate(0, 150)">
             <path d="M 0 0
           l 117.555 81.805
           l -41.47 -137.085
@@ -154,7 +154,7 @@ describe USPSFlags::Grades do
 
             <g transform="translate(87)"><rect x="0" y="0" width="100" height="35" fill="#FFBF3F" />
           </g>
-            <g transform="translate(270)"><g transform="scale(0.25) translate(0, 150)">
+            <g transform="translate(270)"><g transform="scale(0.33) translate(0, 150)">
             <path d="M 0 0
           l 117.555 81.805
           l -41.47 -137.085
@@ -186,7 +186,7 @@ describe USPSFlags::Grades do
     it "should have the JN EdPro bar" do
       expect(@insignia.svg).to include(
         <<~SVG
-          <rect x="0" y="100" width="365" height="15" fill="#FFBF3F" />
+          <rect x="0" y="100" width="385" height="15" fill="#FFBF3F" />
         SVG
       )
     end
@@ -205,8 +205,8 @@ describe USPSFlags::Grades do
       expect(@insignia.svg).to include(
         <<~SVG
           <g transform="translate(0, 50)">
-            <g transform="translate(50)">
-            <g transform="scale(0.25) translate(0, 150)">
+            <g transform="translate(60)">
+            <g transform="scale(0.33) translate(0, 150)">
             <path d="M 0 0
           l 117.555 81.805
           l -41.47 -137.085
@@ -224,7 +224,7 @@ describe USPSFlags::Grades do
 
             <g transform="translate(87)"><rect x="0" y="0" width="100" height="35" fill="#FFBF3F" />
           </g>
-            <g transform="translate(270)"><g transform="scale(0.25) translate(0, 150)">
+            <g transform="translate(270)"><g transform="scale(0.33) translate(0, 150)">
             <path d="M 0 0
           l 117.555 81.805
           l -41.47 -137.085
@@ -242,7 +242,7 @@ describe USPSFlags::Grades do
           </g>
             <g transform="translate(365)"><rect x="0" y="0" width="100" height="35" fill="#FFBF3F" />
           </g>
-            <g transform="translate(550)"><g transform="scale(0.25) translate(0, 150)">
+            <g transform="translate(550)"><g transform="scale(0.33) translate(0, 150)">
             <path d="M 0 0
           l 117.555 81.805
           l -41.47 -137.085
@@ -282,7 +282,7 @@ describe USPSFlags::Grades do
 
     it "should have the SN insignia box" do
       expect(@insignia.svg).to include('<rect x="20" y="-10" width="')
-      expect(@insignia.svg).to include('" height="150" fill="none" stroke-width="15"')
+      expect(@insignia.svg).to include('" height="155" fill="none" stroke-width="20"')
     end
 
     it "should have a senior member arrow" do
@@ -302,5 +302,9 @@ describe USPSFlags::Grades do
     it "should have a 20th position merit mark" do
       expect(@insignia.svg).to include("<rect x=\"855\" y=\"0\" width=\"35\" height=\"80\" fill=\"#FFBF3F\" />")
     end
+  end
+
+  it 'should generate all without error' do
+    expect(USPSFlags::Grades.all).to eql(USPSFlags::Grades::ALL_CONFIGS)
   end
 end

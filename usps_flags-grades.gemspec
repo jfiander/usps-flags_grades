@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = 'usps_flags-grades'
-  s.version       = '0.0.10'
+  s.version       = '0.0.11'
   s.date          = '2019-06-02'
   s.summary       = 'Insignia generator for United States Power Squadrons'
   s.description   = 'An extension to the flag image (PNG, SVG) generator for United States Power Squadrons to generate grade insignia.'

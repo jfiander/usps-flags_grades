@@ -2,7 +2,7 @@ require 'usps_flags'
 require 'usps_flags/grades/config'
 require 'usps_flags/grades/errors'
 
-# Main class for generating burgees.
+# Main class for generating grade and other insignia.
 class USPSFlags::Grades
   require 'usps_flags/grades/grade'
   require 'usps_flags/grades/membership'

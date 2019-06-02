@@ -42,7 +42,7 @@ class USPSFlags::Grades
   def svg
     validate
     @svg = <<~SVG
-      #{USPSFlags::Core.headers(title: title)}
+      #{USPSFlags::Core.headers(title: title).gsub('0 0 3072 2048', '0 0 1024 682')}
       <g transform="translate(0, 50)">
         #{USPSFlags::Grades::Grade.get(@grade)}
         #{USPSFlags::Grades::EdPro.get(@grade) if @edpro && USPSFlags::Grades::EdPro.for_grade(@grade)}

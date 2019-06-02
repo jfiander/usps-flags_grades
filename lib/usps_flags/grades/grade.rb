@@ -12,7 +12,7 @@ class USPSFlags::Grades::Grade
     end
 
     def valid_grades
-      [:s, :p, :ap, :jn, :n, :sn]
+      %i[s p ap jn n sn]
     end
 
     def width(grade)
@@ -20,14 +20,14 @@ class USPSFlags::Grades::Grade
       when :ap
         USPSFlags::Config::GRADE_SPACING * 2.25 + 100
       when :jn
-        USPSFlags::Config::GRADE_SPACING * 3 - 10
+        USPSFlags::Config::GRADE_SPACING * 3 + 10
       when :n
-        USPSFlags::Config::GRADE_SPACING * 5 + 25
+        USPSFlags::Config::GRADE_SPACING * 5 + 45
       end
     end
 
     private
-  
+
     def bar
       <<~SVG
         <rect x="0" y="0" width="100" height="35" fill="#{USPSFlags::Config::GOLD}" />
@@ -36,7 +36,7 @@ class USPSFlags::Grades::Grade
 
     def star
       <<~SVG
-        <g transform="scale(0.25) translate(0, 150)">
+        <g transform="scale(0.33) translate(0, 150)">
           #{USPSFlags::Core::Icons::Star.new.svg.gsub('fill="#FFFFFF"', "fill=\"#{USPSFlags::Config::GOLD}\"")}
         </g>
       SVG
@@ -63,7 +63,7 @@ class USPSFlags::Grades::Grade
 
     def jn
       <<~SVG
-        <g transform="translate(50)">
+        <g transform="translate(60)">
           #{star}
           <g transform="translate(#{USPSFlags::Config::GRADE_SPACING / 2 + 25})">#{bar}</g>
           <g transform="translate(#{USPSFlags::Config::GRADE_SPACING * 2 + 20})">#{star}</g>
@@ -73,7 +73,7 @@ class USPSFlags::Grades::Grade
 
     def n
       <<~SVG
-        <g transform="translate(50)">
+        <g transform="translate(60)">
           #{star}
           <g transform="translate(#{USPSFlags::Config::GRADE_SPACING / 2 + 25})">#{bar}</g>
           <g transform="translate(#{USPSFlags::Config::GRADE_SPACING * 2 + 20})">#{star}</g>
@@ -84,9 +84,9 @@ class USPSFlags::Grades::Grade
     end
 
     def sn
-      box_width = USPSFlags::Grades::Grade.width(:n) + 85
+      box_width = USPSFlags::Grades::Grade.width(:n) + 60
       <<~SVG
-        <rect x="20" y="-10" width="#{box_width}" height="150" fill=\"none\" stroke-width=\"15\" stroke=\"#{USPSFlags::Config::GOLD}\" />
+        <rect x="20" y="-10" width="#{box_width}" height="155" fill=\"none\" stroke-width=\"20\" stroke=\"#{USPSFlags::Config::GOLD}\" />
         <g transform="translate(50, 50)">
           #{n}
         </g>

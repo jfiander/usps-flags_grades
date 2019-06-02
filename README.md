@@ -18,6 +18,13 @@ insignia = USPSFlags::Grades.new do |g|
   g.outfile = "/path/to/svg/output.svg"
 end
 
+insignia = USPSFlags::Grades.new(
+  grade: :sn,
+  membership: :senior,
+  merit_marks: 20,
+  outfile: "/path/to/svg/output.svg"
+)
+
 insignia.svg #=> Generates SVG file at "/path/to/svg/output.svg"
 ```
 

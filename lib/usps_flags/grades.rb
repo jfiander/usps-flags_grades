@@ -9,6 +9,12 @@ class USPSFlags::Grades
   require 'usps_flags/grades/edpro'
   require 'usps_flags/grades/merit_marks'
 
+  ALL_CONFIGS ||= [
+    [:s, false, nil], [:p, false, nil], [:ap, false, nil], [:ap, true, nil],
+    [:jn, false, nil], [:jn, true, nil], [:n, false, nil], [:n, true, nil],
+    [:sn, false, nil], [nil, false, :senior], [nil, false, :life]
+  ].freeze
+
   # Constructor for generating grade insignia.
   #
   # @example Generate JN with EdPro and Senior Member
@@ -20,12 +26,12 @@ class USPSFlags::Grades
   #  end
   #
   #  insignia.svg #=> Generates SVG file at "/path/to/svg/output.svg"
-  def initialize
-    @grade = nil
-    @edpro = false
-    @membership = nil
-    @merit_marks = 0
-    @outfile = nil
+  def initialize(options = {})
+    @grade = options[:grade] || nil
+    @edpro = options[:edpro] || false
+    @membership = options[:membership] || nil
+    @merit_marks = options[:merit_marks] || 0
+    @outfile = options[:outfile] || nil
     @generated_at = Time.now.strftime("%Y%m%d.%H%S%z")
     yield self if block_given?
   end
@@ -71,6 +77,22 @@ class USPSFlags::Grades
     end
 
     "#{grade}#{edpro}#{membership}"
+  end
+
+  def self.all(dir = nil)
+    dir ||= USPSFlags.configuration.flags_dir
+
+    ALL_CONFIGS.each do |grade, edpro, membership|
+      path = "#{dir}/#{grade}"
+      path += '_edpro' if edpro
+
+      insignia = USPSFlags::Grades.new(
+        grade: grade, edpro: edpro, membership: membership,
+        outfile: "#{path}.svg"
+      )
+
+      USPSFlags::Generate.png(insignia.svg, outfile: "#{path}.png", trim: true)
+    end
   end
 
   private

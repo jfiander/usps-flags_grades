@@ -21,23 +21,6 @@ end
 insignia.svg #=> Generates SVG file at "/path/to/svg/output.svg"
 ```
 
-## Security
-
-This gem is cryptographically signed. To be sure the gem code hasn’t been
-tampered with:
-
-Add my public key as a trusted certificate:
-
-```sh
-gem cert --add <(curl -Ls https://raw.github.com/jfiander/usps-flags_grades/master/certs/jfiander.pem)
-```
-
-Then install the gem securely:
-
-```sh
-gem install usps_flags-grades -P HighSecurity
-```
-
 ## License
 
 Actual images generated are

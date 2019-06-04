@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    usps_flags-grades (0.0.11)
+    usps_flags-grades (0.0.12)
       usps_flags (~> 0.4, >= 0.4.0)
 
 GEM

@@ -5,15 +5,17 @@
 class USPSFlags::Grades::EdPro
   class << self
     def get(grade)
-      raise USPSFlags::Errors::InvalidInsignia, "EdPro is only valid for grades AP, JN, N" unless for_grade(grade)
+      unless for_grade(grade)
+        raise USPSFlags::Errors::InvalidInsignia, 'EdPro is only valid for grades AP, JN, N'
+      end
 
       <<~SVG
-        <rect x="0" y="100" width="#{USPSFlags::Grades::Grade.width(grade)}" height="15" fill="#{USPSFlags::Config::GOLD}" />
+        <rect x="0" y="100" width="#{USPSFlags::Grades::Grade.width(grade)}" height="20" fill="#{USPSFlags::Config::GOLD}" />
       SVG
     end
 
     def for_grade(grade)
-      [:ap, :jn, :n].include?(grade)
+      %i[ap jn n].include?(grade)
     end
   end
 end

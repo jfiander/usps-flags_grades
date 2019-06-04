@@ -115,7 +115,7 @@ describe USPSFlags::Grades do
     it "should have the AP EdPro bar" do
       expect(@insignia.svg).to include(
         <<~SVG
-          <rect x="0" y="100" width="381.25" height="15" fill="#FFBF3F" />
+          <rect x="0" y="100" width="381.25" height="20" fill="#FFBF3F" />
         SVG
       )
     end
@@ -186,7 +186,7 @@ describe USPSFlags::Grades do
     it "should have the JN EdPro bar" do
       expect(@insignia.svg).to include(
         <<~SVG
-          <rect x="0" y="100" width="385" height="15" fill="#FFBF3F" />
+          <rect x="0" y="100" width="385" height="20" fill="#FFBF3F" />
         SVG
       )
     end
@@ -306,5 +306,11 @@ describe USPSFlags::Grades do
 
   it 'should generate all without error' do
     expect(USPSFlags::Grades.all).to eql(USPSFlags::Grades::ALL_CONFIGS)
+  end
+
+  it 'should raise the correct error with an invalid edpro request' do
+    expect { USPSFlags::Grades::EdPro.get(:s) }.to raise_error(
+      USPSFlags::Errors::InvalidInsignia, 'EdPro is only valid for grades AP, JN, N'
+    )
   end
 end

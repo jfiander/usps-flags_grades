@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'usps_flags'
 require 'usps_flags/grades/config'
 require 'usps_flags/grades/errors'
@@ -27,12 +29,12 @@ class USPSFlags::Grades
   #
   #  insignia.svg #=> Generates SVG file at "/path/to/svg/output.svg"
   def initialize(options = {})
-    @grade = options[:grade] || nil
+    @grade = options[:grade]
     @edpro = options[:edpro] || false
-    @membership = options[:membership] || nil
+    @membership = options[:membership]
     @merit_marks = options[:merit_marks] || 0
-    @outfile = options[:outfile] || nil
-    @generated_at = Time.now.strftime("%Y%m%d.%H%S%z")
+    @outfile = options[:outfile]
+    @generated_at = Time.now.strftime('%Y%m%d.%H%S%z')
     yield self if block_given?
   end
 
@@ -68,12 +70,12 @@ class USPSFlags::Grades
   # @return [String] Returns the descriptive title.
   def title
     grade = @grade.to_s.upcase
-    edpro = " - EdPro" if @edpro && @grade != :sn
+    edpro = ' - EdPro' if @edpro && @grade != :sn
     membership = case @membership
-    when :senior
-      " - Senior Member"
-    when :life
-      " - Life Member"
+                 when :senior
+                   ' - Senior Member'
+                 when :life
+                   ' - Life Member'
     end
 
     "#{grade}#{edpro}#{membership}"
@@ -95,7 +97,7 @@ class USPSFlags::Grades
     end
   end
 
-  private
+private
 
   def validate
     validate_grade
@@ -112,7 +114,7 @@ class USPSFlags::Grades
   def validate_edpro
     return if [true, false].include?(@edpro)
 
-    raise USPSFlags::Errors::InvalidInsignia, "EdPro must be boolean"
+    raise USPSFlags::Errors::InvalidInsignia, 'EdPro must be boolean'
   end
 
   def validate_membership

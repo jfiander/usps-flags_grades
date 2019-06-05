@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Core SVG data for the membership level insignia.
 #
 # This class should never need to be called directly.
@@ -11,7 +13,7 @@ class USPSFlags::Grades::Membership
       SVG
     end
 
-    private
+  private
 
     def arrow
       <<~SVG

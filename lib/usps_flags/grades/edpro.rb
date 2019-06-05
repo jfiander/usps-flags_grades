@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Core SVG data for the Educational Proficiency insignia.
 #
 # This class should never need to be called directly.

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Core SVG data for grade insignia.
 #
 # This class should never need to be called directly.
@@ -26,7 +28,7 @@ class USPSFlags::Grades::Grade
       end
     end
 
-    private
+  private
 
     def bar
       <<~SVG

@@ -4,8 +4,8 @@ require 'spec_helper'
 
 describe USPSFlags::Grades do
   describe 'invalid insignia' do
-    it 'should raise USPSFlags::Errors::InvalidInsignia if an invalid grade is specified' do
-      @insignia = USPSFlags::Grades.new do |b|
+    it 'raises USPSFlags::Errors::InvalidInsignia if an invalid grade is specified' do
+      @insignia = described_class.new do |b|
         b.grade = :not_a_grade
         b.outfile = ''
       end
@@ -15,8 +15,8 @@ describe USPSFlags::Grades do
       )
     end
 
-    it 'should raise USPSFlags::Errors::InvalidInsignia if an invalid edpro is specified' do
-      @insignia = USPSFlags::Grades.new do |b|
+    it 'raises USPSFlags::Errors::InvalidInsignia if an invalid edpro is specified' do
+      @insignia = described_class.new do |b|
         b.edpro = nil
         b.outfile = ''
       end
@@ -26,8 +26,8 @@ describe USPSFlags::Grades do
       )
     end
 
-    it 'should raise USPSFlags::Errors::InvalidInsignia if an invalid membership is specified' do
-      @insignia = USPSFlags::Grades.new do |b|
+    it 'raises USPSFlags::Errors::InvalidInsignia if an invalid membership is specified' do
+      @insignia = described_class.new do |b|
         b.membership = :normal
         b.outfile = ''
       end
@@ -38,15 +38,15 @@ describe USPSFlags::Grades do
     end
   end
 
-  context 'S' do
-    before(:each) do
-      @insignia = USPSFlags::Grades.new do |g|
+  context 'with S' do
+    before do
+      @insignia = described_class.new do |g|
         g.grade = :s
         g.outfile = ''
       end
     end
 
-    it 'should have the S insignia' do
+    it 'has the S insignia' do
       expect(@insignia.svg).to include(
         <<~SVG
           <g transform="translate(0, 50)">
@@ -56,15 +56,15 @@ describe USPSFlags::Grades do
     end
   end
 
-  context 'P' do
-    before(:each) do
-      @insignia = USPSFlags::Grades.new do |g|
+  context 'with P' do
+    before do
+      @insignia = described_class.new do |g|
         g.grade = :p
         g.outfile = ''
       end
     end
 
-    it 'should have the P insignia' do
+    it 'has the P insignia' do
       expect(@insignia.svg).to include(
         <<~SVG
           <g transform="translate(0, 50)">
@@ -77,16 +77,16 @@ describe USPSFlags::Grades do
     end
   end
 
-  context 'AP - EdPro' do
-    before(:each) do
-      @insignia = USPSFlags::Grades.new do |g|
+  context 'with AP - EdPro' do
+    before do
+      @insignia = described_class.new do |g|
         g.grade = :ap
         g.edpro = true
         g.outfile = ''
       end
     end
 
-    it 'should have the AP insignia' do
+    it 'has the AP insignia' do
       expect(@insignia.svg).to include(
         <<~SVG
           <g transform="translate(0, 50)">
@@ -114,7 +114,7 @@ describe USPSFlags::Grades do
       )
     end
 
-    it 'should have the AP EdPro bar' do
+    it 'has the AP EdPro bar' do
       expect(@insignia.svg).to include(
         <<~SVG
           <rect x="0" y="100" width="381.25" height="20" fill="#FFBF3F" />
@@ -123,9 +123,9 @@ describe USPSFlags::Grades do
     end
   end
 
-  context 'JN - 5MM' do
-    before(:each) do
-      @insignia = USPSFlags::Grades.new do |g|
+  context 'with JN - 5MM' do
+    before do
+      @insignia = described_class.new do |g|
         g.grade = :jn
         g.merit_marks = 5
         g.edpro = true
@@ -133,7 +133,7 @@ describe USPSFlags::Grades do
       end
     end
 
-    it 'should have the JN insignia' do
+    it 'has the JN insignia' do
       expect(@insignia.svg).to include(
         <<~SVG
           <g transform="translate(0, 50)">
@@ -177,15 +177,15 @@ describe USPSFlags::Grades do
       )
     end
 
-    it 'should have a 5th position merit mark' do
+    it 'has a 5th position merit mark' do
       expect(@insignia.svg).to include('<rect x="180" y="0" width="35" height="80" fill="#FFBF3F" />')
     end
 
-    it 'should not have a 6th position merit mark' do
-      expect(@insignia.svg).to_not include('<rect x="225" y="0" width="35" height="80" fill="#FFBF3F" />')
+    it 'does not have a 6th position merit mark' do
+      expect(@insignia.svg).not_to include('<rect x="225" y="0" width="35" height="80" fill="#FFBF3F" />')
     end
 
-    it 'should have the JN EdPro bar' do
+    it 'has the JN EdPro bar' do
       expect(@insignia.svg).to include(
         <<~SVG
           <rect x="0" y="100" width="385" height="20" fill="#FFBF3F" />
@@ -194,16 +194,16 @@ describe USPSFlags::Grades do
     end
   end
 
-  context 'N - Life Member' do
-    before(:each) do
-      @insignia = USPSFlags::Grades.new do |g|
+  context 'with N - Life Member' do
+    before do
+      @insignia = described_class.new do |g|
         g.grade = :n
         g.membership = :life
         g.outfile = ''
       end
     end
 
-    it 'should have the N insignia' do
+    it 'has the N insignia' do
       expect(@insignia.svg).to include(
         <<~SVG
           <g transform="translate(0, 50)">
@@ -265,7 +265,7 @@ describe USPSFlags::Grades do
       )
     end
 
-    it 'should have a life member arrow' do
+    it 'has a life member arrow' do
       expect(@insignia.svg).to include(
         'm 107.6,178.2 c -0.2,0.7 -1.2,4.7 -2.1,8.8 -0.9,4.1 -2.2,9.7 -3,12.5 -7.9,29.7 -8.9,51.9 -2.9,67.7 4.5,' \
         '12.2 7,16.7 8.9,16.7 2.4,0.1 12.2,-15.8 16.2,-26.4 6.4,-16.5 6.7,-18 6.7,-33.6 0.1,-15.7 -0.1,-16.4 -6.7,' \
@@ -274,9 +274,9 @@ describe USPSFlags::Grades do
     end
   end
 
-  context 'SN - Senior Member - 20 MM' do
-    before(:each) do
-      @insignia = USPSFlags::Grades.new do |g|
+  context 'with SN - Senior Member - 20 MM' do
+    before do
+      @insignia = described_class.new do |g|
         g.grade = :sn
         g.membership = :senior
         g.merit_marks = 20
@@ -284,12 +284,13 @@ describe USPSFlags::Grades do
       end
     end
 
-    it 'should have the SN insignia box' do
-      expect(@insignia.svg).to include('<rect x="20" y="-10" width="')
-      expect(@insignia.svg).to include('" height="155" fill="none" stroke-width="20"')
+    it 'has the SN insignia box' do
+      expect(@insignia.svg).to include(
+        '<rect x="20" y="-10" width="730" height="155" fill="none" stroke-width="20"'
+      )
     end
 
-    it 'should have a senior member arrow' do
+    it 'has a senior member arrow' do
       expect(@insignia.svg).to include(
         <<~SVG
           <polyline points="0,250 75,220 75,240 150,240 150,260 75,260 75,280 0,250" fill="#FFBF3F" />
@@ -303,16 +304,16 @@ describe USPSFlags::Grades do
       )
     end
 
-    it 'should have a 20th position merit mark' do
+    it 'has a 20th position merit mark' do
       expect(@insignia.svg).to include('<rect x="855" y="0" width="35" height="80" fill="#FFBF3F" />')
     end
   end
 
-  it 'should generate all without error' do
-    expect(USPSFlags::Grades.all).to eql(USPSFlags::Grades::ALL_CONFIGS)
+  it 'generates all without error' do
+    expect(described_class.all).to eql(USPSFlags::Grades::ALL_CONFIGS)
   end
 
-  it 'should raise the correct error with an invalid edpro request' do
+  it 'raises the correct error with an invalid edpro request' do
     expect { USPSFlags::Grades::EdPro.get(:s) }.to raise_error(
       USPSFlags::Errors::InvalidInsignia, 'EdPro is only valid for grades AP, JN, N'
     )

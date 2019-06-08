@@ -3,7 +3,9 @@
 # Extension of USPSFlags::Config to for insignia config.
 #
 # @private
-class USPSFlags::Config
-  GOLD ||= '#FFBF3F'
-  GRADE_SPACING ||= 125
+class USPSFlags
+  class Config
+    GOLD ||= '#FFBF3F'
+    GRADE_SPACING ||= 125
+  end
 end

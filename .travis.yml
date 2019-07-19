@@ -8,6 +8,8 @@ notifications:
   email:
     on_success: change
     on_failure: always
+before_install:
+  - gem install bundler -v '< 2'
 script:
   - bundle exec rubocop
   - bundle exec rspec

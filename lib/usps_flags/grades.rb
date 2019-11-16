@@ -66,6 +66,14 @@ class USPSFlags
       USPSFlags::Helpers.output(@svg, outfile: @outfile)
     end
 
+    # Generates the constructed file as PNG.
+    #
+    # @return [String] Returns the PNG file output path.
+    def png(outfile: nil)
+      USPSFlags::Generate.png(svg, outfile: outfile)
+      outfile
+    end
+
     # Generates the descriptive title for the SVG.
     #
     # @return [String] Returns the descriptive title.

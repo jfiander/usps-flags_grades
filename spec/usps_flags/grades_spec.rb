@@ -318,4 +318,10 @@ describe USPSFlags::Grades do
       USPSFlags::Errors::InvalidInsignia, 'EdPro is only valid for grades AP, JN, N'
     )
   end
+
+  it 'does not raise an error from png' do
+    expect { described_class.new { |g| g.membership = :life }.png(outfile: './life.png') }.not_to(raise_error)
+  ensure
+    File.delete('./life.png')
+  end
 end

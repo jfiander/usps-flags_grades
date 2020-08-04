@@ -35,7 +35,7 @@ class USPSFlags
         def life_bar
           <<~SVG
             <polyline points="145,240 275,240 275,260 145,260 145,240" fill="#{USPSFlags::Config::GOLD}" />
-            <polyline points="400,240 610,240 610,260 475,260 475,240" fill="#{USPSFlags::Config::GOLD}" />
+            <polyline points="475,240 610,240 610,260 475,260 475,240" fill="#{USPSFlags::Config::GOLD}" />
           SVG
         end
 

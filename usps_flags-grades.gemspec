@@ -2,8 +2,8 @@
 
 Gem::Specification.new do |s|
   s.name          = 'usps_flags-grades'
-  s.version       = '0.1.3'
-  s.date          = '2019-07-19'
+  s.version       = '0.1.5'
+  s.date          = '2020-08-03'
   s.summary       = 'Insignia generator for United States Power Squadrons'
   s.description   = 'An extension to the flag image generator for United States Power Squadrons to generate insignia.'
   s.homepage      = 'http://rubygems.org/gems/usps_flags-grades'

@@ -2,8 +2,8 @@
 
 Gem::Specification.new do |s|
   s.name          = 'usps_flags-grades'
-  s.version       = '0.1.6'
-  s.date          = '2023-03-13'
+  s.version       = '0.2.0'
+  s.date          = '2024-05-17'
   s.summary       = 'Insignia generator for United States Power Squadrons'
   s.description   = 'An extension to the flag image generator for United States Power Squadrons to generate insignia.'
   s.homepage      = 'http://rubygems.org/gems/usps_flags-grades'
@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- spec/*`.split("\n")
 
-  s.required_ruby_version = '>= 2.5'
+  s.required_ruby_version = '>= 3.0'
 
   s.add_runtime_dependency 'usps_flags', '~> 0.5',  '>= 0.5.5'
 

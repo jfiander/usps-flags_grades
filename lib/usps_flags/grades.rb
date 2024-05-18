@@ -39,11 +39,7 @@ class USPSFlags
       yield self if block_given?
     end
 
-    attr_accessor :grade
-    attr_accessor :edpro
-    attr_accessor :membership
-    attr_accessor :merit_marks
-    attr_accessor :outfile
+    attr_accessor :grade, :edpro, :membership, :merit_marks, :outfile
 
     # Generates the constructed file as SVG.
     #
